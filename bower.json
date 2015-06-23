@@ -1,0 +1,29 @@
+{
+  "name": "ui-router-addons",
+  "description": "Various addons for the UI Router: ModalState",
+  "version": "0.1.0",
+  "main": "modal.js",
+  "license": "MIT",
+  "keyword": [
+    "angular",
+    "ui",
+    "router",
+    "ui-router",
+    "modal"
+  ],
+  "authors": [
+    {
+      "name": "Xavier Martin",
+      "email": "nolazybits+uirouteraddons@gmail.com",
+      "homepage": "http://nolazybits.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nolazybits/ui-router-addons"
+  },
+  "dependencies": {
+    "angular": "^1.3.x",
+    "angular-ui-router": "~0.2.13"
+  }
+}
