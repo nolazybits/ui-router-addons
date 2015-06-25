@@ -4,18 +4,23 @@ app.config(['$stateProvider', '$modalStateProvider', function($stateProvider, $m
   $stateProvider
     .state('app.home', {
       url: '/home',
-      templateUrl: 'js/main/templates/home.tpl.html',
-      controller: 'HomeCtrl'
+        onEnter: function() {console.log('entering home')},
+        onExit: function() {console.log('exiting home')},
+        templateUrl: 'js/main/templates/home.tpl.html',
+        controller: 'HomeCtrl',
+        controllerAs: 'ctrl'
     })
     .state('app.about', {
       url: '/about',
       templateUrl: 'js/main/templates/about.tpl.html',
-      controller: 'AboutCtrl'
+        controller: 'AboutCtrl',
+        controllerAs: 'ctrl'
     })
     .state('app.contact', {
       url: '/contact',
       templateUrl: 'js/main/templates/contact.tpl.html',
-      controller: 'ContactCtrl'
+        controller: 'ContactCtrl',
+        controllerAs: 'ctrl'
     });
 
   $modalStateProvider
