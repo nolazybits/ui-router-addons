@@ -49,7 +49,7 @@
                 exit: function() {
                     //  get current state
                     var currentState = $state.current,
-                        instance;
+                        stateToName, index, instance;
 
                     if(currentState.modal === true)
                     {
@@ -60,7 +60,16 @@
                         //  and remove the key/value from the dictionary
                         delete _this.modals[name];
                         //  and finally transition back to the parent state
-                        $state.go('^');
+                        var index = currentState.name.indexOf('.modal.');
+                        if( index !== -1)
+                        {
+                            stateToName = currentState.name.substring(0, index);
+                        }
+                        else
+                        {
+                            stateToName = currentState.name.substring(0, currentState.name.lastIndexOf('.'));
+                        }
+                        $state.go(stateToName);
                     }
 
                 }
@@ -95,7 +104,6 @@
                                 fromState = $state.$current;
                                 newtoState = angular.copy(toStateSelf);
                                 //  append the name to the current state name.
-                                newtoState.url = ''; // $location.absUrl().split('?')[0] + toState.url;
                                 newtoState.name = fromState.name + '.modal.' + toStateSelf.name;
                                 //  does the state exist?
                                 if (!$state.get(newtoState.name)) {
@@ -111,8 +119,8 @@
                                     }
                                     //  finally add our modal state
                                     $stateProvider.state(newtoState.name, newtoState);
-                                    to = newtoState.name;
                                 }
+                                to = newtoState.name;
                             }
                             $state_transitionTo.call($state, to, toParams);
                         }

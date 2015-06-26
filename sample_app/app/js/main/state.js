@@ -26,7 +26,6 @@ app.config(['$stateProvider', '$modalStateProvider', function($stateProvider, $m
   $modalStateProvider
       .state('app.home.login', // this states needs to exists as
       {
-        modal: true,
         url: '/login',  //  this will get appended to the current url, if you want a modal not changing the url do not provide this property
         controller: 'LoginCtrl',
         controllerAs: 'ctrl',
