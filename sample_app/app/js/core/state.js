@@ -6,7 +6,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 
   $stateProvider
     .state('app', {
-      url: '',
+      url: '/',
       controller: 'AppCtrl',
       views: {
         'navbar': {

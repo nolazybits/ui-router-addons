@@ -6,3 +6,5 @@
 *.iml
 node_modules/
 bower_components/
+sample_app/app/js/history.js
+sample_app/app/js/modal.js

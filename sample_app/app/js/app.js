@@ -1,4 +1,10 @@
-var app = angular.module('app', ['ui.router', 'ngMaterial', 'ui.router.addons.modal'])
+var app = angular.module('app',
+    [
+        'ui.router',
+        'ngMaterial',
+        'ui.router.addons.modal',
+        'ui.router.addons.history'
+    ])
     .config(['$modalStateProvider', function($modalStateProvider) {
         $modalStateProvider.defaultOptions = {
             hasBackdrop: true,
