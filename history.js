@@ -28,6 +28,10 @@
                 //  use the html5 mode for location (no hash in the url)
                 $locationProvider.html5Mode(true);
 
+                window.onpopstate = function(event){
+                    console.log(event.state); // will be our state data, so myNewState.data
+                }
+
                 // Decorate the $state service, so we can decorate the $state.transitionTo() function with sticky state stuff.
                 $provide.decorator('$state', ['$delegate', '$location', function ($state, $location) {
                     $state_transitionTo = $state.transitionTo;
@@ -37,14 +41,16 @@
                             fromStateSelf = fromState.self;
 
                         //  check if we have the 'history' property on the config and if false call the replace on location
-                        console.log(fromState);
                         if( fromStateSelf.history !== null && fromStateSelf.history === false )
                         {
-                            $location.replace();
-                            //  TODO check for same url twice in the history
+                            options = options ? options : {};
+                            options.location = 'replace';
+                            $state_transitionTo.call($state, to, toParams, options)
                         }
-
-                        $state_transitionTo.apply($state, arguments);
+                        else
+                        {
+                            $state_transitionTo.apply($state, arguments);
+                        }
                         return $state;
                     };
                     return $state;
