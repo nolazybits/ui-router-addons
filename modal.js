@@ -24,15 +24,15 @@
         $ModalStateProvider.prototype.state = function (name, config) {
             var _this = this;
             var modalOptions = this.defaultOptions;
-            angular.extend(modalOptions, config);
+            modalOptions = angular.extend({}, modalOptions, config);
 
             //  flag it as a modal
             config.modal = true;
 
             config.onEnter = function ($state, $modalState) {
-                _this.modals[$state.current.name] = $modalState.showModal($state.current.name, modalOptions);
+                _this.modals[this.name] = $modalState.showModal(this.name, modalOptions);
             };
-            config.onEnter.$inject = ['$state', '$modalState'];
+            config.onEnter.$inject = ['$state', '$modalState', '$rootScope'];
 
             delete config.template;
             delete config.templateUrl;
