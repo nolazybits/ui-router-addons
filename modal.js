@@ -32,7 +32,7 @@
             config.onEnter = function ($state, $modalState) {
                 _this.modals[this.name] = $modalState.showModal(this.name, modalOptions);
             };
-            config.onEnter.$inject = ['$state', '$modalState', '$rootScope'];
+            config.onEnter.$inject = ['$state', '$modalState'];
 
             delete config.template;
             delete config.templateUrl;
