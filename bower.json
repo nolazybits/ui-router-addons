@@ -1,7 +1,7 @@
 {
   "name": "ui-router-addons",
-  "description": "Various addons for the UI Router: ModalState, History",
-  "version": "0.6.0",
+  "description": "Various addons for the UI Router: ModalState, History, Redirect",
+  "version": "0.7.0",
   "main": "modal.js",
   "license": "MIT",
   "keyword": [
