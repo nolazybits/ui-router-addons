@@ -39,16 +39,16 @@
                         {
                             redirectTo = toStateSelf.redirectTo;
                             if (angular.isString(redirectTo)) {
-                                $state_transitionTo.call($state, redirectTo, toParams);
+                                return $state_transitionTo.call($state, redirectTo, toParams);
                             }
                             else if( Object.prototype.toString.call(redirectTo) == '[object Function]' ) {
                                 var newState = $injector.invoke(redirectTo, null, { toState: toStateSelf, toParams: toParams });
                                 if (newState) {
                                     if (angular.isString(newState)) {
-                                        $state_transitionTo.call($state, newState);
+                                        return $state_transitionTo.call($state, newState);
                                     }
                                     else if (newState.state) {
-                                        $state_transitionTo.call(newState.state, newState.params);
+                                        return $state_transitionTo.call(newState.state, newState.params);
                                     }
                                 }
                             }
@@ -59,9 +59,8 @@
                         }
                         else
                         {
-                            $state_transitionTo.apply($state, arguments);
+                            return $state_transitionTo.apply($state, arguments);
                         }
-                        return $state;
                     };
                     return $state;
                 }]);

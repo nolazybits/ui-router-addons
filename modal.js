@@ -122,13 +122,12 @@
                                 }
                                 to = newtoState.name;
                             }
-                            $state_transitionTo.call($state, to, toParams);
+                            return $state_transitionTo.call($state, to, toParams);
                         }
                         else
                         {
-                            $state_transitionTo.apply($state, arguments);
+                            return $state_transitionTo.apply($state, arguments);
                         }
-                        return $state;
                     };
                     return $state;
                 }]);
